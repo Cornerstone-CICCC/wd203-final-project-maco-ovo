@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { type Product, type RawProduct } from "../types/productTypes";
+import { Link } from "react-router";
 
 const Items = () => {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -60,14 +61,19 @@ const Items = () => {
 
 			<ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
 				{currentItems.map((p) => (
-					<li key={p.id} className="border p-4 rounded shadow">
-						<img
-							src={p.photo}
-							alt={p.name}
-							className="w-full h-48 object-cover mb-2 rounded"
-						/>
-						<h2 className="text-xl font-semibold">{p.name}</h2>
-						<p className="text-gray-700">${p.price.toFixed(2)}</p>
+					<li
+						key={p.id}
+						className="border p-4 rounded shadow hover:shadow-lg transition "
+					>
+						<Link to={`/items/${p.id}`}>
+							<img
+								src={p.photo}
+								alt={p.name}
+								className="w-full h-48 object-cover mb-2 rounded"
+							/>
+							<h2 className="text-xl font-semibold">{p.name}</h2>
+							<p className="text-gray-700">${p.price.toFixed(2)}</p>
+						</Link>
 					</li>
 				))}
 			</ul>
