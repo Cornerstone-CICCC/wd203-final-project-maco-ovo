@@ -16,21 +16,10 @@ const router = createBrowserRouter([
 		errorElement: <NotFound />,
 		children: [
 			{ index: true, element: <Home /> },
-			{
-				path: "/items",
-				element: <Items />,
-				children: [
-					{
-						path: "/items/:id",
-						element: <ItemDetail />,
-					},
-				],
-			},
-			{
-				path: "/cart",
-				element: <Cart />,
-				children: [{ path: "checkout", element: <Checkout /> }],
-			},
+			{ path: "items", element: <Items /> },
+			{ path: "items/:id", element: <ItemDetail /> },
+			{ path: "cart", element: <Cart /> },
+			{ path: "checkout", element: <Checkout /> },
 		],
 	},
 ]);

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 const Header = () => {
 	return (
 		<nav>
-			<ul>
+			<ul className="flex flex-row justify-center gap-5">
 				<li>
 					<Link to="/">Home</Link>
 				</li>
