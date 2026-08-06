@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useCart } from "../context/CartContext";
 
 const Sidebar = () => {

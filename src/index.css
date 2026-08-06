@@ -1,5 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap");
 @import "tailwindcss";
 
+@theme {
+	/* Colors */
+	--color-primary: #0c6780;
+	--color-on-primary: #ffffff;
+	--color-secondary: #006e21;
+	--color-on-secondary: #ffffff;
+	--color-tertiary: #4d6265;
+	--color-background: #f9f9f9;
+	--color-on-background: #1a1c1c;
+
+	--color-surface: #f9f9f9;
+	--color-surface-dim: #dadada;
+	--color-surface-container: #eeeeee;
+
+	--color-error: #ba1a1a;
+
+	/* Typography */
+	--font-display: "Libre Caslon Text", serif;
+	--font-sans: "Plus Jakarta Sans", sans-serif;
+
+	/* Rounded (Shapes) */
+	--radius-sm: 0.25rem;
+	--radius-md: 0.75rem;
+	--radius-lg: 1rem;
+	--radius-xl: 1.5rem;
+
+	/* Spacing */
+	--spacing-unit: 8px;
+	--spacing-gutter: 24px;
+
+	/* Custom Shadows (Soft Glow) */
+	--shadow-glow: 0 4px 20px rgba(135, 206, 235, 0.2);
+}
+
+/* 
 :root {
 	--text: #6b6375;
 	--text-h: #08060d;
@@ -67,4 +103,4 @@
 body {
 	margin: 0;
 	background-color: rgb(237, 209, 181);
-}
+} */
