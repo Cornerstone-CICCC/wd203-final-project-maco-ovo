@@ -33,10 +33,10 @@ const ItemDetail = () => {
 	return (
 		<div className="p-12 md:flex md:flex-row">
 			<img src={item.photo} alt={item.name} className="w-64 mb-4" />
-			<div className="flex flex-col gap-3">
+			<div className="flex flex-col">
 				<h1 className="text-3xl mb-4">{item.name}</h1>
-				<p className="text-xl">${item.price.toFixed(2)}</p>
-				<p className="text-gray-600">{item.desc}</p>
+				<p className="text-xl mb-4">${item.price.toFixed(2)}</p>
+				<p className="text-gray-600 mt-6">{item.desc}</p>
 
 				<button
 					onClick={() => addToCart(item)}

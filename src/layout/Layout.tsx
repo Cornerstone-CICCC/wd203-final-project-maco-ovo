@@ -5,15 +5,14 @@ import Sidebar from "../components/Sidebar";
 
 const Layout = () => {
 	return (
-		<div>
+		<div className="min-h-screen flex flex-col">
 			<Header />
-			<div className="flex flex-row min-h-screen">
-				<main>
-					<Outlet />
-				</main>
-				<Sidebar />
-			</div>
+			<main className="flex-1">
+				<Outlet />
+			</main>
 			<Footer />
+
+			<Sidebar />
 		</div>
 	);
 };

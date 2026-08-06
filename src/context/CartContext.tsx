@@ -13,6 +13,8 @@ type CartContextType = {
 	removeFromCart: (id: number) => void;
 	clearCart: () => void;
 	totalPrice: number;
+	isShown: boolean;
+	toggleSidebar: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -26,6 +28,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
 	useEffect(() => {
 		localStorage.setItem("cafe_cart", JSON.stringify(cart));
 	}, [cart]);
+
+	const [isShown, setIsShown] = useState(false);
+	const toggleSidebar = () => {
+		setIsShown((prev) => !prev);
+	};
 
 	// Add
 	const addToCart = (product: Product) => {
@@ -60,7 +67,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
 	return (
 		<CartContext.Provider
-			value={{ cart, addToCart, removeFromCart, clearCart, totalPrice }}
+			value={{
+				cart,
+				addToCart,
+				removeFromCart,
+				clearCart,
+				totalPrice,
+				isShown,
+				toggleSidebar,
+			}}
 		>
 			{children}
 		</CartContext.Provider>

@@ -2,21 +2,25 @@ import { Link } from "react-router";
 import { useCart } from "../context/CartContext";
 
 const Header = () => {
-	const { cart } = useCart();
+	const { cart, toggleSidebar } = useCart();
 	const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 	return (
-		<nav>
-			<ul className="flex flex-row justify-center gap-5">
+		<nav className="p-4 bg-gray-100 flex justify-between items-center">
+			<ul className="flex gap-4">
 				<li>
 					<Link to="/">Home</Link>
 				</li>
 				<li>
 					<Link to="/items">Menu</Link>
 				</li>
-				<li>
-					<Link to="/cart">Cart ({totalItems})</Link>
-				</li>
 			</ul>
+
+			<button
+				onClick={toggleSidebar}
+				className="font-bold bg-white px-4 py-2 rounded shadow hover:bg-gray-200"
+			>
+				Cart ({totalItems})
+			</button>
 		</nav>
 	);
 };
