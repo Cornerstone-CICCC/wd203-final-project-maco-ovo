@@ -8,6 +8,7 @@ import Items from "./pages/Items";
 import ItemDetail from "./pages/ItemDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import { CartProvider } from "./context/CartContext";
 
 const router = createBrowserRouter([
 	{
@@ -25,5 +26,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")!).render(
-	<RouterProvider router={router} />,
+	<CartProvider>
+		<RouterProvider router={router} />,
+	</CartProvider>,
 );

@@ -13,3 +13,7 @@ export type Product = {
 	photo: string;
 	price: number;
 };
+
+export type CartItem = Product & {
+	quantity: number;
+};
