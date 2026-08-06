@@ -19,7 +19,7 @@ const Items = () => {
 				}));
 
 				setProducts(formattedProducts);
-				console.log("products:", formattedProducts);
+				// console.log("products:", formattedProducts);
 			} catch (error) {
 				console.error("Failed fetching:", error);
 			}
