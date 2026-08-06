@@ -25,12 +25,12 @@ const Header = () => {
 							</Link>
 						</li>
 						<li>
-							<Link
-								to="/Cart"
+							<button
+								onClick={toggleSidebar}
 								className="text-sm font-semibold uppercase tracking-wider bg-primary/10 text-primary px-4 py-2 rounded hover:bg-primary/20 transition-colors"
 							>
-								Cart (0)
-							</Link>
+								Cart ({totalItems})
+							</button>
 						</li>
 					</ul>
 				</nav>
