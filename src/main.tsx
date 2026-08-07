@@ -9,6 +9,7 @@ import ItemDetail from "./pages/ItemDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import { CartProvider } from "./context/CartContext";
+import { FavoriteProvider } from "./context/FavoriteContext";
 
 const router = createBrowserRouter([
 	{
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
 	<CartProvider>
-		<RouterProvider router={router} />
+		<FavoriteProvider>
+			<RouterProvider router={router} />
+		</FavoriteProvider>
 	</CartProvider>,
 );
