@@ -12,7 +12,9 @@ type CartContextType = {
 	addToCart: (product: Product) => void;
 	removeFromCart: (id: number) => void;
 	clearCart: () => void;
+	taxAmount: number;
 	totalPrice: number;
+	finalTotal: number;
 	isShown: boolean;
 	toggleSidebar: () => void;
 };
@@ -59,11 +61,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
 		setCart([]);
 	};
 
-	// total
+	// total / tax
 	const totalPrice = cart.reduce(
 		(sum, item) => sum + item.price * item.quantity,
 		0,
 	);
+	const taxRate = 0.085;
+	const taxAmount = totalPrice * taxRate;
+	const finalTotal = totalPrice + taxAmount;
 
 	return (
 		<CartContext.Provider
@@ -73,6 +78,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
 				removeFromCart,
 				clearCart,
 				totalPrice,
+				taxAmount,
+				finalTotal,
 				isShown,
 				toggleSidebar,
 			}}
