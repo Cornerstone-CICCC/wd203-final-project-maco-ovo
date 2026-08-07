@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import { type Product, type RawProduct } from "../types/productTypes";
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
@@ -31,19 +31,54 @@ const ItemDetail = () => {
 	if (!item) return <div>Loading...</div>;
 
 	return (
-		<div className="p-12 md:flex md:flex-row">
-			<img src={item.photo} alt={item.name} className="w-64 mb-4" />
-			<div className="flex flex-col">
-				<h1 className="text-3xl mb-4">{item.name}</h1>
-				<p className="text-xl mb-4">${item.price.toFixed(2)}</p>
-				<p className="text-gray-600 mt-6">{item.desc}</p>
+		<div className="max-w-5xl mx-auto px-4 py-8 md:py-16">
+			<Link
+				to="/items"
+				className="inline-flex items-center gap-2 mb-10 text-sm font-semibold uppercase tracking-widest text-tertiary hover:text-primary transition-colors"
+			>
+				◀︎　Back to Menu
+			</Link>
+			<div className="flex flex-col md:flex-row gap-12 md:gap-20 items-center">
+				<div className="w-full md:w-1/2">
+					<img
+						src={item.photo}
+						alt={item.name}
+						className="w-full aspect-square object-cover rounded-3xl shadow-glow "
+					/>
+				</div>
+				<div className="w-full md:w-1/2 flex flex-col items-start">
+					<h1 className="font-display text-4xl md:text-5xl text-on-background leading-tight mb-4">
+						{item.name}
+					</h1>
 
-				<button
-					onClick={() => addToCart(item)}
-					className="mt-4 px-6 py-2 bg-amber-800 text-white rounded hover:bg-amber-900 w-fit"
-				>
-					Add to Cart
-				</button>
+					<p className="font-body text-2xl md:text-3xl font-semibold text-primary mb-12">
+						${item.price.toFixed(2)}
+					</p>
+
+					<p className="font-body text-lg text-on-surface-variant leading-relaxed mb-12">
+						{item.desc}
+					</p>
+
+					<button
+						onClick={() => addToCart(item)}
+						className="inline-flex items-center justify-center gap-3 w-full md:w-auto px-8 py-4 bg-primary text-white font-body font-semibold rounded-full transition-all hover:scale-[1.02] hover:shadow-glow active:scale-95"
+					>
+						<svg
+							className="w-5 h-5"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+							/>
+						</svg>
+						Add to Cart
+					</button>
+				</div>
 			</div>
 		</div>
 	);

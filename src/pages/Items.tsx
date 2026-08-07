@@ -26,7 +26,7 @@ const Items = () => {
 		};
 		fetchProducts();
 	}, []);
-
+ 
 	// Pagination
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
