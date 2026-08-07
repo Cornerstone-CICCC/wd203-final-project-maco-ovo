@@ -17,6 +17,7 @@ type CartContextType = {
 	finalTotal: number;
 	isShown: boolean;
 	toggleSidebar: () => void;
+	updateQuantity: (id: number, quantity: number) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -70,6 +71,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
 	const taxAmount = totalPrice * taxRate;
 	const finalTotal = totalPrice + taxAmount;
 
+	// update quantity
+	const updateQuantity = (id: number, quantity: number) => {
+		if (quantity < 1) return;
+		setCart((prev) =>
+			prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
+		);
+	};
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -82,6 +91,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 				finalTotal,
 				isShown,
 				toggleSidebar,
+				updateQuantity,
 			}}
 		>
 			{children}

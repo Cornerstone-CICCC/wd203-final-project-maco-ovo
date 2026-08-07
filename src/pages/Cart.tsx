@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { useCart } from "../context/CartContext";
 
 const Cart = () => {
-	const { cart, removeFromCart, totalPrice } = useCart();
+	const { cart, removeFromCart, totalPrice, updateQuantity } = useCart();
 
 	if (cart.length === 0) {
 		return (
@@ -32,7 +32,7 @@ const Cart = () => {
 				{cart.map((item) => (
 					<li
 						key={item.id}
-						className="flex flex-col md:flex-row md:items-center justify-between gap-5 p-6 bg-surface-container-lowest border-tertiary-container/30 transition-shadow hover:shadow-glow"
+						className="flex flex-col md:flex-row md:items-center justify-between gap-5 p-6 bg-surface-container-lowest border-tertiary-container/30 transition-shadow hover:shadow-glow rounded-[1.5rem] border"
 					>
 						<div className="flex items-center gap-6">
 							<img
@@ -44,13 +44,30 @@ const Cart = () => {
 								<h2 className="font-display text-2xl text-on-surface mb-2">
 									{item.name}
 								</h2>
-								<p className="font-body text-on-surface-variant font-medium">
-									${item.price.toFixed(2)}
-									<span className="mx-2 text-tertiary text-sm font-normal">
-										x
-									</span>
-									{item.quantity}
-								</p>
+
+								<div className="flex items-center gap-4 mt-1">
+									<p className="font-body text-on-surface-variant font-medium">
+										${item.price.toFixed(2)}
+									</p>
+
+									<div className="flex items-center gap-2">
+										<span className="font-body text-sm text-tertiary">
+											Qty:
+										</span>
+										<input
+											type="number"
+											min="1"
+											value={item.quantity}
+											onChange={(e) => {
+												const newQty = parseInt(e.target.value, 10);
+												if (newQty > 0) {
+													updateQuantity(item.id, newQty);
+												}
+											}}
+											className="w-16 px-2 py-1 border border-outline-variant rounded-md bg-surface-container-lowest text-center focus:outline-none focus:border-primary transition-colors font-body"
+										/>
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -60,8 +77,21 @@ const Cart = () => {
 							</p>
 							<button
 								onClick={() => removeFromCart(item.id)}
-								className="text-sm font-semibold cursor-pointer tracking-wider text-error/80 hover:text-error transition-colors"
+								className="text-sm font-semibold cursor-pointer tracking-wider text-error/80 hover:text-error transition-colors flex items-center gap-1"
 							>
+								<svg
+									className="w-4 h-4"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+									/>
+								</svg>
 								REMOVE
 							</button>
 						</div>
