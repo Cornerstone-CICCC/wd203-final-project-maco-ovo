@@ -118,7 +118,7 @@ const Sidebar = () => {
 									Checkout　→
 								</button>
 							</div>
-						</div>
+						</div> 
 					</>
 				)}
 			</aside>
